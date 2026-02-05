@@ -80,7 +80,7 @@ where
     type BaseType = F;
 
     #[inline(always)]
-    fn project(self) -> [Self::BaseType; Self::N] {
+    fn to_array(self) -> [Self::BaseType; Self::N] {
         [self]
     }
 
