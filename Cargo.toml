@@ -1,0 +1,57 @@
+[package]
+name = "zima"
+version = "0.1.0-alpha.0"
+edition = "2024"
+authors = ["Reklle <exomoonhowl@gmail.com>"]  # ← add your info
+license = "MIT OR Apache-2.0"
+documentation = "https://docs.rs/zima"
+readme = "README.md"
+keywords = ["statistics", "resampling"]
+categories = ["science", "mathematics"]
+description = "An attempt to create a modern package for the needs of applied statistics"
+
+[lib]
+name = "zima"
+path = "src/lib.rs"
+crate-type = ["rlib"]
+
+[dependencies]
+csv = "1.4.0"
+num-traits = "0.2.19"
+rand = "0.8"
+serde = { version = "1.0.228", features = ["derive"] }
+statrs = "0.18.0"
+comfy-table = "6.0.0"
+
+[dev-dependencies]
+approx = "0.5.1"
+criterion = { version = "0.8.1", features = ["html_reports"] }
+rand_xoshiro = "0.6"
+itertools = "0.14.0"
+
+[[bench]]
+name = "bootstrap_bench"
+harness = false
+
+[lints.rust]
+missing_docs = "warn"
+rust_2018_idioms = "warn"
+unused_crate_dependencies = "warn"
+
+# Some optimisations requires unsafe
+unsafe_code = "allow"
+
+[lints.clippy]
+pedantic = "warn"
+cargo = "warn"
+perf = "warn"
+style = "warn"
+complexity = "warn"
+correctness = "warn"
+
+too_many_arguments = "forbid"
+module_name_repetitions = "warn"
+cast_possible_truncation = "allow"
+cast_sign_loss = "allow"
+float_cmp = "forbid"
+indexing_slicing = "forbid"
