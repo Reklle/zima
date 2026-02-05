@@ -2,8 +2,9 @@
 name = "zima"
 version = "0.1.0-alpha.0"
 edition = "2024"
-authors = ["Reklle <exomoonhowl@gmail.com>"]  # ← add your info
+authors = ["Reklle <exomoonhowl@gmail.com>"]
 license = "MIT OR Apache-2.0"
+repository = "https://github.com/Reklle/zima"
 documentation = "https://docs.rs/zima"
 readme = "README.md"
 keywords = ["statistics", "resampling"]
