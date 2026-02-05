@@ -1,0 +1,13 @@
+/target
+/target-*/
+/target_*/
+**/target/
+**/target-*/
+**/target_*/
+
+.devenv*
+devenv.local.nix
+devenv.local.yaml
+.direnv
+.pre-commit-config.yaml
+/criterion

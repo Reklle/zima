@@ -1,6 +1,5 @@
 #![allow(warnings)]
 #![allow(unused_variables, dead_code)]
-#![feature(generic_const_exprs)]
 
 mod math;
 

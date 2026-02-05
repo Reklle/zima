@@ -47,15 +47,14 @@ pub trait Vector:
 ///
 /// `N` is the rank of the corresponding free module summand.
 /// `BaseType` is the scalar type used for coordinates (typically `Float`).
-pub trait Projective {
-    const N: usize;
+pub trait Projective<const N: usize = 1> {
     type BaseType;
 
     /// Project the element onto its coordinate representation.
-    fn to_array(self) -> [Self::BaseType; Self::N];
+    fn to_array(self) -> [Self::BaseType; N];
 
     /// Reconstruct the element from coordinates.
-    fn from_array(array: [Self::BaseType; Self::N]) -> Self;
+    fn from_array(array: [Self::BaseType; N]) -> Self;
 }
 
 // --- Implementations for primitives ----------------------------------------------
@@ -72,20 +71,19 @@ where
     }
 }
 
-impl<F> Projective for F
+impl<F> Projective<1> for F
 where
     F: Float + FromPrimitive + Copy,
 {
-    const N: usize = 1;
     type BaseType = F;
 
     #[inline(always)]
-    fn to_array(self) -> [Self::BaseType; Self::N] {
+    fn to_array(self) -> [F; 1] {
         [self]
     }
 
     #[inline(always)]
-    fn from_array(array: [Self::BaseType; Self::N]) -> Self {
+    fn from_array(array: [F; 1]) -> Self {
         array[0]
     }
 }

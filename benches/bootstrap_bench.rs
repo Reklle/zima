@@ -3,7 +3,7 @@ use criterion::{criterion_group, criterion_main, BenchmarkId, Criterion, Through
 use rand::prelude::*; // Provides thread_rng()
 use std::hint::black_box; // Modern black_box (Criterion 0.5+ deprecated its own)
 use rand_xoshiro::Xoshiro256PlusPlus;
-use sample::*;
+use zima::*;
 use rand::SeedableRng;
 const SAMPLE_SIZE: usize = 1_000;      // Fixed size for tests 2-4
 const RESAMPLES: usize = 10_000;       // Bootstrap iterations

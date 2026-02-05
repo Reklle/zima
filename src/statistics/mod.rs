@@ -2,6 +2,39 @@ pub trait Statistic<D, T> {
     fn compute(&self, data: &D) -> T;
 }
 
+pub trait Standardize<D, F> {
+    fn standardize(&self, data: &D) -> D;
+}
+
+impl<D, F> Standardize<D, F> for Mean
+where
+    D: AsRef<[F]> + FromIterator<F>,
+    F: Float + FromPrimitive,
+{
+    fn standardize(&self, data: &D) -> D {
+        let mean = self.compute(data);
+        data.as_ref()
+            .iter()
+            .map(|x| *x - mean)
+            .collect()
+    }
+}
+
+impl<D, F> Standardize<D, F> for Variance
+where
+    D: AsRef<[F]> + FromIterator<F>,
+    F: Float + FromPrimitive,
+{
+    fn standardize(&self, data: &D) -> D {
+        let var = self.compute(data);
+        data.as_ref()
+            .iter()
+            .map(|x| *x / var.sqrt())
+            .collect()
+    }
+}
+
+
 mod mean;
 mod basic;
 mod se;
@@ -15,6 +48,7 @@ mod ci;
 pub use mean::Mean;
 pub use basic::*;
 
+use num_traits::{Float, FromPrimitive};
 pub use se::{SEMean, SE};
 pub use studentized::Studentized;
 pub use cdf::{CDF, EmpiricalCDF};
