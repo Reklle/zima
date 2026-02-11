@@ -2,6 +2,7 @@
 #![allow(unused_variables, dead_code)]
 
 mod math;
+mod cert;
 
 mod sample;
 mod resample;

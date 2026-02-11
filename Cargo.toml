@@ -16,6 +16,10 @@ name = "zima"
 path = "src/lib.rs"
 crate-type = ["rlib"]
 
+[features]
+default = []
+rayon = ["dep:rayon"]
+
 [dependencies]
 csv = "1.4.0"
 num-traits = "0.2.19"
@@ -23,6 +27,7 @@ rand = "0.8"
 serde = { version = "1.0.228", features = ["derive"] }
 statrs = "0.18.0"
 comfy-table = "6.0.0"
+rayon = { version = "1.11.0", optional = true }
 
 [dev-dependencies]
 approx = "0.5.1"
